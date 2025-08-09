@@ -55,6 +55,7 @@ gvfs-nfs \
 gvfs-smb \
 less \
 loupe \
+man-db \
 mission-center \
 nano \
 nautilus \
@@ -65,6 +66,8 @@ pipewire-audio \
 pipewire-jack \
 pipewire-pulse \
 power-profiles-daemon \
+qt5-base \
+qt6-base \
 sushi \
 tar \
 timeshift \
@@ -114,34 +117,42 @@ else
     echo -e "\n░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
 fi
 
-echo 'NoDisplay=true' >> /usr/share/applications/avahi-discover.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/bssh.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/bvnc.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/nvtop.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/org.gnome.FileRoller.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/qv4l2.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/qvidcap.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/vim.desktop
-echo 'NoDisplay=true' >> /usr/share/applications/vlc.desktop
-echo -e "\n░▒▓█ APLICACIONES OCULTADAS. █▓▒░\n"
+for file in \
+  /usr/share/applications/avahi-discover.desktop \
+  /usr/share/applications/bssh.desktop \
+  /usr/share/applications/bvnc.desktop \
+  /usr/share/applications/nvtop.desktop \
+  /usr/share/applications/org.gnome.FileRoller.desktop \
+  /usr/share/applications/qv4l2.desktop \
+  /usr/share/applications/qvidcap.desktop \
+  /usr/share/applications/vim.desktop \
+  /usr/share/applications/vlc.desktop
+do
+  if [[ -f "$file" ]] && ! grep -Fxq "NoDisplay=true" "$file"; then
+    echo 'NoDisplay=true' >> "$file"
+    echo -e "\n░▒▓█ OCULTADA '$(basename "$file")'. █▓▒░\n"
+  else
+    echo -e "\n░▒▓█ '$(basename "$file")' YA ESTÁ OCULTA. █▓▒░\n"
+  fi
+done
 
-#rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/auto-move-windows@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/light-style@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/native-window-placement@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/status-icons@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com
-#rm -rf /usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
-#echo -e "\n░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"
+rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/auto-move-windows@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/light-style@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/native-window-placement@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/status-icons@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
+echo -e "\n░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"
 
 sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
-sed -i 's/^#\(GRUB_DISABLE_OS_PROBER=false\)/\1/' /etc/default/grub
+sed -i 's/^\(GRUB_DISABLE_OS_PROBER=false\)/\1/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\n░▒▓█ GRUB CONFIGURADO. █▓▒░\n"
 
@@ -151,5 +162,13 @@ echo -e "\n░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░\n"
 flatpak update -y
 echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"
 
-sleep 5
+git clone https://github.com/rafa-ga/gnome-minimal.git "/opt/gnome-minimal"
+echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"
+
+echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
+sleep 1
+echo -e "\n░▒▓█ REINICIANDO EN 2... █▓▒░\n"
+sleep 1
+echo -e "\n░▒▓█ REINICIANDO EN 1... █▓▒░\n"
+sleep 1
 reboot now
