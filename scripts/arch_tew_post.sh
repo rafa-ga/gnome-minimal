@@ -22,6 +22,7 @@ alias update='yay -Syu --noconfirm'
 EOF
 source "$HOME/.bashrc"
 echo -e "\n░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"
+sleep 3
 
 dconf load /org/gnome/nautilus/ < /opt/gnome-minimal/configuracion/nautilus.conf
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
@@ -35,18 +36,22 @@ if ! command -v yay &>/dev/null; then
     cd yay
     makepkg -si --noconfirm --rmdeps
     echo -e "\n░▒▓█ 'yay' INSTALADO. █▓▒░\n"
+    sleep 3
     cd ..
     rm -rf yay
 else
     echo -e "\n░▒▓█ 'yay' YA ESTÁ INSTALADO. █▓▒░\n"
+    sleep 3
 fi
 
 yay -Syu --noconfirm
 echo -e "\n░▒▓█ 'yay' ACTUALIZADO. █▓▒░\n"
+sleep 3
 
 yay -S --noconfirm --needed gdm-settings gnome-shell-extension-installer
 echo -e "\n░▒▓█ INSTALADO 'gdm-settings'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'gnome-shell-extension-installer'. █▓▒░\n"
+sleep 3
 
 gnome-shell-extension-installer 307 3210 4269 5219 7065 7535 --yes
 
@@ -56,8 +61,11 @@ echo -e "\n░▒▓█ INSTALADO 'Alphabetical App Grid'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'TopHat'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'Tiling Shell'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'Accent Icons'. █▓▒░\n"
+sleep 3
 
 sudo pacman -Rns $(pacman -Qdtq)
+echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
+sleep 3
 
 #if pacman -Qdtq &>/dev/null; then
 #  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
@@ -81,5 +89,12 @@ done
 #dconf load /org/gnome/shell/extensions/ < "$HOME/gnome-minimal/Config/extensions.conf"
 
 echo -e "\n░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"
+sleep 3
 
+echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
+sleep 1
+echo -e "\n░▒▓█ REINICIANDO EN 2... █▓▒░\n"
+sleep 1
+echo -e "\n░▒▓█ REINICIANDO EN 1... █▓▒░\n"
+sleep 1
 sudo reboot now
