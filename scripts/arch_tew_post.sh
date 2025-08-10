@@ -28,7 +28,7 @@ dconf load /org/gnome/nautilus/ < /opt/gnome-minimal/configuracion/nautilus.conf
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-#/opt/gnome-minimal/scripts/theme_switcher.sh
+/opt/gnome-minimal/scripts/theme_switcher.sh
 
 if ! command -v yay &>/dev/null; then
     cd "$HOME"
@@ -63,32 +63,8 @@ echo -e "\n░▒▓█ INSTALADO 'Tiling Shell'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'Accent Icons'. █▓▒░\n"
 sleep 3
 
-sudo pacman -Rns $(pacman -Qdtq)
+sudo pacman -Rns --noconfirm $(pacman -Qdtq)
 echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
-sleep 3
-
-#if pacman -Qdtq &>/dev/null; then
-#  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
-#fi
-
-EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
-
-for ext in "$EXT_DIR"/*; do
-    SCHEMAS_DIR="$ext/schemas"
-
-    if [[ ! -f "$SCHEMAS_DIR/gschemas.compiled" ]]; then
-        glib-compile-schemas "$SCHEMAS_DIR"
-        gnome-extensions enable $(basename "$ext")
-        echo -e "\n░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
-    else
-        gnome-extensions enable $(basename "$ext")
-        echo -e "\n░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
-    fi
-done
-
-#dconf load /org/gnome/shell/extensions/ < "$HOME/gnome-minimal/Config/extensions.conf"
-
-echo -e "\n░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"
 sleep 3
 
 echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
