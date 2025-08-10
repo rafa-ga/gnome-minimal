@@ -57,9 +57,11 @@ echo -e "\n░▒▓█ INSTALADO 'TopHat'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'Tiling Shell'. █▓▒░\n"
 echo -e "\n░▒▓█ INSTALADO 'Accent Icons'. █▓▒░\n"
 
-if pacman -Qdtq &>/dev/null; then
-  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
-fi
+sudo pacman -Rns $(pacman -Qdtq)
+
+#if pacman -Qdtq &>/dev/null; then
+#  sudo pacman -Rns $(pacman -Qdtq) --noconfirm
+#fi
 
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
 
