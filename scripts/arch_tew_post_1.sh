@@ -28,7 +28,7 @@ dconf load /org/gnome/nautilus/ < /opt/gnome-minimal/configuracion/nautilus.conf
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-/opt/gnome-minimal/scripts/theme_switcher.sh
+bash /opt/gnome-minimal/scripts/theme_switcher.sh
 
 if ! command -v yay &>/dev/null; then
     cd "$HOME"
