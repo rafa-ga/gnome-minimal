@@ -29,6 +29,8 @@ dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.con
 echo -e "\n░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"
 sleep 3
 
+bash /opt/gnome-minimal/scripts/theme_switcher.sh
+
 echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
 sleep 1
 echo -e "\n░▒▓█ REINICIANDO EN 2... █▓▒░\n"
