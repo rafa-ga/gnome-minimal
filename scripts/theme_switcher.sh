@@ -112,6 +112,7 @@ case "$accent" in
   *)
     echo -e "\n░▒▓█ OPCIÓN NO VÁLIDA. █▓▒░\n"
     gsettings set org.gnome.desktop.interface accent-color blue || true
+    gsettings set org.gnome.desktop.background "$SCHEME" "file:///opt/gnome-minimal/imagenes/wallpaper_azul.png"
     sudo cp "/opt/gnome-minimal/imagenes/avatar_azul.png" "/var/lib/AccountsService/icons/$(whoami)"
     ;;
 esac
