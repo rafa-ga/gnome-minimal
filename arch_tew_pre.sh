@@ -162,7 +162,9 @@ echo -e "\n░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░\n"
 flatpak update -y
 echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"
 
+HUMAN=$(getent passwd 1000 | cut -d: -f1)
 git clone https://github.com/rafa-ga/gnome-minimal.git "/opt/gnome-minimal"
+chown -R "$HUMAN":"$HUMAN" "/opt/gnome-minimal"
 echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"
 
 echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
