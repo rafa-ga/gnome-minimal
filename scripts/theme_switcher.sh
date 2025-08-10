@@ -104,7 +104,7 @@ case "$accent" in
     echo -e "\n░▒▓█ SELECCIONADO COLOR GRIS. █▓▒░\n"
     ;;
   10)
-    CRONLINE="0 * * * * /opt/gnome-minimal/scripts/theme_switcher.sh"
+    CRONLINE="0 0 * * * /opt/gnome-minimal/scripts/theme_switcher.sh"
     ( crontab -l 2>/dev/null | grep -Fxq "$CRONLINE" ) || \
     ( crontab -l 2>/dev/null; echo "$CRONLINE" ) | crontab -
     echo -e "\n░▒▓█ ROTACIÓN SELECCIONADA. █▓▒░\n"
