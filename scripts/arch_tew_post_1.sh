@@ -27,8 +27,6 @@ sleep 3
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 
-bash /opt/gnome-minimal/scripts/theme_switcher.sh
-
 if ! command -v yay &>/dev/null; then
     cd "$HOME"
     git clone https://aur.archlinux.org/yay.git
