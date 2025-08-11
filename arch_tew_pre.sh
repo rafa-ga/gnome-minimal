@@ -43,6 +43,7 @@ gnome-font-viewer \
 gnome-keyring \
 gnome-logs \
 gnome-menus \
+gnome-music \
 gnome-session \
 gnome-settings-daemon \
 gnome-shell \
@@ -125,8 +126,7 @@ for file in \
   /usr/share/applications/org.gnome.FileRoller.desktop \
   /usr/share/applications/qv4l2.desktop \
   /usr/share/applications/qvidcap.desktop \
-  /usr/share/applications/vim.desktop \
-  /usr/share/applications/vlc.desktop
+  /usr/share/applications/vim.desktop
 do
   if [[ -f "$file" ]] && ! grep -Fxq "NoDisplay=true" "$file"; then
     echo 'NoDisplay=true' >> "$file"
