@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Theme Switcher
+Comment=Theme Switcher
+Exec=/usr/bin/env bash -lc /opt/gnome-minimal/scripts/theme_switcher.sh
+Icon=applications-graphics
+Terminal=true
+Categories=Utility;
