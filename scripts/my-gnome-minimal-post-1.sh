@@ -5,7 +5,7 @@ set -e
 echo -e "\n░▒▓█ INICIANDO SEGUNDA FASE. █▓▒░\n"; sleep 3
 
 cat << 'EOF' >> "$HOME/.bashrc"
-PS1="\[\e[38;5;1250m\]\u\[\e[0m\]@\[\e[38;5;1250m\]\w\[\e[0m\] » "
+#
 alias cc='cat'
 alias clean='pacman -Qdtq | xargs -r yay -Rns --noconfirm && sudo paccache -r -k3'
 alias errors='journalctl -p err -b'
@@ -22,6 +22,7 @@ alias tt='tail -f'
 alias ttt='truncate -s0'
 alias vv='vim'
 alias update='yay -Syu --noconfirm'
+PS1="\[\e[38;5;1255m\]\u\[\e[0m\]@\[\e[38;5;1255m\]\w\[\e[0m\] » "
 EOF
 source "$HOME/.bashrc"
 echo -e "░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 3
@@ -66,7 +67,7 @@ yay -Rns --noconfirm gnome-shell-extension-installer
 echo -e "\n░▒▓█ DESINSTALADO 'gnome-shell-extension-installer'. █▓▒░\n"
 
 pacman -Qdtq | xargs -r yay -Rns --noconfirm
-echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
+echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░"
 
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
@@ -78,5 +79,4 @@ echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep
 echo -e "3...\n"; sleep 1
 echo -e "2...\n"; sleep 1
 echo -e "1...\n"; sleep 1
-sleep 60
-#systemctl reboot
+systemctl reboot
