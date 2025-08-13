@@ -1,0 +1,14 @@
+[Unit]
+Description=My Gnome minimal post-script 1
+ConditionPathExists=!%h/.config/.my-gnome_minimal_post_1_done
+After=graphical-session.target
+Wants=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gnome-terminal -- bash -lc '/opt/gnome-minimal/scripts/my-gnome-minimal-post-1.sh'
+RemainAfterExit=no
+
+[Install]
+WantedBy=graphical-session.target
