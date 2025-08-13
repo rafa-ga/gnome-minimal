@@ -3,21 +3,23 @@
 set -e
 
 pacman -Syu --noconfirm
-echo -e "\n░▒▓█ SISTEMA ACTUALIZADO. █▓▒░\n"
+echo -e "\n░▒▓█ SISTEMA ACTUALIZADO. █▓▒░\n"; sleep 3
 
 model=$(lscpu | grep -iE "Model name|Nombre del modelo" | awk -F: '{print $2}' | sed 's/^ *//')
 
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
-    echo -e "\n░▒▓█ DETECTADA MÁQUINA VIRTUAL. █▓▒░\n"
+    echo -e "░▒▓█ DETECTADA MÁQUINA VIRTUAL. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
     pacman -S --noconfirm --needed intel-ucode
-    echo -e "\n░▒▓█ DETECTADA CPU INTEL. █▓▒░\n"
+    echo -e "░▒▓█ DETECTADA CPU INTEL. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
     pacman -S --noconfirm --needed amd-ucode
-    echo -e "\n░▒▓█ DETECTADA CPU AMD. █▓▒░\n"
+    echo -e "░▒▓█ DETECTADA CPU AMD. █▓▒░\n"
 else
-    echo -e "\n░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
+    echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
 fi
+
+sleep 3
 
 pacman -S --noconfirm --needed \
 awesome-terminal-fonts \
@@ -25,10 +27,12 @@ baobab \
 base-devel \
 bluez \
 bluez-utils \
+cifs-utils \
 curl \
 dkms \
 evince \
 ffmpeg \
+ffmpegthumbnailer \
 file-roller \
 flatpak \
 gdm \
@@ -53,10 +57,12 @@ gnome-shell-extensions \
 gnome-software \
 gnome-terminal \
 gnome-text-editor \
+gst-libav \
 gvfs \
 gvfs-nfs \
 gvfs-smb \
 less \
+libheif \
 linux-zen-headers \
 loupe \
 man-db \
@@ -64,6 +70,7 @@ mission-center \
 nano \
 nautilus \
 networkmanager \
+nfs-utils \
 os-prober \
 pacman-contrib \
 pipewire \
@@ -83,6 +90,7 @@ unrar \
 vim \
 vlc \
 vlc-plugins-all \
+webp-pixbuf-loader \
 wget \
 wireplumber \
 xdg-desktop-portal \
@@ -111,16 +119,18 @@ else
 fi
 
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
-    echo -e "\n░▒▓█ NO SE INSTALARÁ NINGÚN PAQUETE PARA GAMING. █▓▒░\n"
+    echo -e "░▒▓█ NO SE INSTALARÁ NINGÚN PAQUETE PARA GAMING. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
     pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode
-    echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
+    echo -e "░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
     pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud xf86-video-amdgpu
-    echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
+    echo -e "░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 else
-    echo -e "\n░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
+    echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
 fi
+
+sleep 3
 
 for file in \
   /usr/share/applications/avahi-discover.desktop \
@@ -134,9 +144,9 @@ for file in \
 do
   if [[ -f "$file" ]] && ! grep -Fxq "NoDisplay=true" "$file"; then
     echo 'NoDisplay=true' >> "$file"
-    echo -e "\n░▒▓█ OCULTADA '$(basename "$file")'. █▓▒░\n"
+    echo -e "░▒▓█ OCULTADA '$(basename "$file")'. █▓▒░\n"
   else
-    echo -e "\n░▒▓█ '$(basename "$file")' YA ESTÁ OCULTA. █▓▒░\n"
+    echo -e "░▒▓█ '$(basename "$file")' YA ESTÁ OCULTA. █▓▒░\n"
   fi
 done
 
@@ -153,7 +163,7 @@ rm -rf /usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.g
 rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
-echo -e "\n░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"
+echo -e "░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"
 
 sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
 sed -i 's/^\(GRUB_DISABLE_OS_PROBER=false\)/\1/' /etc/default/grub
@@ -161,7 +171,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\n░▒▓█ GRUB CONFIGURADO. █▓▒░\n"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-echo -e "\n░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░\n"
+echo -e "░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░\n"
 
 flatpak update -y
 echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"
@@ -169,12 +179,36 @@ echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"
 HUMAN=$(getent passwd 1000 | cut -d: -f1)
 git clone https://github.com/rafa-ga/gnome-minimal.git "/opt/gnome-minimal"
 chown -R "$HUMAN":"$HUMAN" "/opt/gnome-minimal"
+chmod +x /opt/gnome-minimal/scripts/*
 echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"
 
-echo -e "\n░▒▓█ REINICIANDO EN 3... █▓▒░\n"
-sleep 1
-echo -e "\n░▒▓█ REINICIANDO EN 2... █▓▒░\n"
-sleep 1
-echo -e "\n░▒▓█ REINICIANDO EN 1... █▓▒░\n"
-sleep 1
+HUMAN_HOME=$(getent passwd "$HUMAN" | cut -d: -f6)
+mkdir -p "$HUMAN_HOME/.config/systemd/user"
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd"
+
+cat > "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" <<'EOF'
+[Unit]
+Description=My Gnome minimal post-script 1
+ConditionPathExists=!%h/.config/.my-gnome_minimal_post_1_done
+After=graphical-session.target
+Wants=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gnome-terminal -- bash -lc '/opt/gnome-minimal/scripts/my-gnome-minimal-post-1.sh'
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target
+EOF
+
+chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
+
+su - "$HUMAN" -c 'systemctl --user daemon-reload && systemctl --user enable my-gnome-minimal-post-1.service'
+
+echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ 3... █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ 2... █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ 1... █▓▒░\n"; sleep 1
 reboot now
