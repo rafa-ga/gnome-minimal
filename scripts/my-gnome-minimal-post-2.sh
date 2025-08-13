@@ -188,6 +188,8 @@ case "$accent" in
     ;;
 esac
 
+mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/share/applications"
+
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "\n░▒▓█ 3... █▓▒░\n"; sleep 1
 echo -e "\n░▒▓█ 2... █▓▒░\n"; sleep 1
