@@ -70,18 +70,13 @@ echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
 
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
-systemctl --user disable --now my-gnome-minimal-post-1.service || true
-echo -e "\n░▒▓█ DISABLE. █▓▒░\n"; sleep 3
-systemctl --user daemon-reload || true
-echo -e "\n░▒▓█ RELOAD. █▓▒░\n"; sleep 3
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
-echo -e "\n░▒▓█ /user/my-gnome-minimal-post-1.service. █▓▒░\n"; sleep 3
 rm -f "$HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
-echo -e "\n░▒▓█ /user/graphical-session.target.wants/my-gnome-minimal-post-1.service. █▓▒░\n"; sleep 3
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
 echo -e "2...\n"; sleep 1
 echo -e "1...\n"; sleep 1
+sleep 60
 #systemctl reboot
