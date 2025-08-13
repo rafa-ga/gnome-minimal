@@ -43,7 +43,6 @@ if ! command -v yay &>/dev/null; then
 else
     echo -e "\n░▒▓█ 'yay' YA ESTÁ INSTALADO. █▓▒░\n"
 fi
-
 sleep 3
 
 yay -Syu --noconfirm
