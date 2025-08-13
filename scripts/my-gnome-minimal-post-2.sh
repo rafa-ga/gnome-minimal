@@ -4,6 +4,8 @@ set -e
 
 echo -e "\n░▒▓█ INICIANDO TERCERA Y ÚLTIMA FASE. █▓▒░\n"; sleep 3
 
+rm -f "$HOME/.config/.my-gnome_minimal_post_1_done"
+
 dconf load /org/gnome/nautilus/ < "/opt/gnome-minimal/configuracion/nautilus.conf"
 echo -e "░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 3
 
@@ -11,31 +13,31 @@ dconf load /org/gnome/desktop/app-folders/ < "/opt/gnome-minimal/configuracion/a
 echo -e "░▒▓█ DASHBOARD CONFIGURADO. █▓▒░\n"; sleep 3
 
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
-# COMPROBAR A APRTIR DE AQUÍ LOS SALTOS DE LÍNEA.
+
 for ext in "$EXT_DIR"/*; do
     SCHEMAS_DIR="$ext/schemas"
 
     if [[ ! -f "$SCHEMAS_DIR/gschemas.compiled" ]]; then
         glib-compile-schemas "$SCHEMAS_DIR"
         gnome-extensions enable $(basename "$ext")
-        echo -e "\n░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
+        echo -e "░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
     else
         gnome-extensions enable $(basename "$ext")
-        echo -e "\n░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
+        echo -e "░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
     fi
 done
 sleep 3
 
 dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.conf"
-echo -e "\n░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
 
 echo "¿QUIERES INSTALAR ALGUNAS DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
-echo "0) Ninguna."
+echo -e "\n0) Ninguna."
 echo "1) Steam."
 echo "2) Heroic."
 echo "3) Lutris."
 echo "3) ProtonPlus."
-echo "4) Discord."
+echo -e "4) Discord.\n"
 read -rp  "PUEDES ELEGIR VARIAS OPCIONES (SEPARADAS POR ESPACIOS): " opciones
 echo
 
@@ -108,9 +110,9 @@ else
     SCHEME="picture-uri-dark"
 fi
 
-echo -e "¿QUÉ COLOR DE SISTEMA PREFIERES? "
-echo -e "\n 1) Azul      2) Cian     3) Verde"
-echo -e " 4) Amarillo  5) Naranja  6) Rojo"
+echo "¿QUÉ COLOR DE SISTEMA PREFIERES? "
+echo -e "\n1) Azul      2) Cian     3) Verde"
+echo " 4) Amarillo  5) Naranja  6) Rojo"
 echo -e " 7) Rosa      8) Morado   9) Gris\n"
 read -rp "SELECCIONA [1-9]: " accent
 echo
@@ -188,7 +190,9 @@ case "$accent" in
     ;;
 esac
 
-mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/share/applications"
+mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/applications"
+chmod +x "$HOME/.local/share/applications/theme_switcher.desktop"
+echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
