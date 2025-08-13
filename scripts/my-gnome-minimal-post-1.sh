@@ -71,7 +71,7 @@ echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
-rm -f "$HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
+rm -f "$HOME/.config/systemd/user/graphical-session.target.wants/*"
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
