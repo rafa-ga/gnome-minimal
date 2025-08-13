@@ -187,7 +187,6 @@ echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"; s
 
 HUMAN_HOME=$(getent passwd "$HUMAN" | cut -d: -f6)
 mkdir -p "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
-chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd"
 
 cat > "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" <<'EOF'
 [Unit]
@@ -205,7 +204,6 @@ RemainAfterExit=no
 [Install]
 WantedBy=graphical-session.target
 EOF
-
 echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/systemd/user'. █▓▒░\n"; sleep 3
 
 chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
