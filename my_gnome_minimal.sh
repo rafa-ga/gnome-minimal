@@ -31,6 +31,7 @@ cifs-utils \
 curl \
 dkms \
 evince \
+fastfetch \
 ffmpeg \
 ffmpegthumbnailer \
 file-roller \
@@ -96,16 +97,16 @@ wireplumber \
 xdg-desktop-portal \
 xdg-desktop-portal-gnome \
 xorg-xwayland
-echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"
+echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"; sleep 3
 
 systemctl start NetworkManager && systemctl enable NetworkManager
-echo -e "\n░▒▓█ 'NetworkManager' HABILITADO E INICIADO. █▓▒░\n"
+echo -e "\n░▒▓█ 'NetworkManager' HABILITADO E INICIADO. █▓▒░\n"; sleep 3
 
 systemctl start bluetooth && systemctl enable bluetooth
-echo -e "\n░▒▓█ BLUETOOTH HABILITADO E INICIADO. █▓▒░\n"
+echo -e "\n░▒▓█ BLUETOOTH HABILITADO E INICIADO. █▓▒░\n"; sleep 3
 
 systemctl enable gdm
-echo -e "\n░▒▓█ 'gdm' HABILITADO. █▓▒░\n"
+echo -e "\n░▒▓█ 'gdm' HABILITADO. █▓▒░\n"; sleep 3
 
 if ! grep -qx '\[multilib\]' /etc/pacman.conf; then
     echo -e '\n[multilib]' >> /etc/pacman.conf
@@ -150,6 +151,8 @@ do
   fi
 done
 
+sleep 3
+
 rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/auto-move-windows@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
@@ -163,24 +166,24 @@ rm -rf /usr/share/gnome-shell/extensions/system-monitor@gnome-shell-extensions.g
 rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/windowsNavigator@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
-echo -e "░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"
+echo -e "░▒▓█ EXTENSIONES LEGACY ELIMINADAS. █▓▒░\n"; sleep 3
 
 sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
 sed -i 's/^\(GRUB_DISABLE_OS_PROBER=false\)/\1/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-echo -e "\n░▒▓█ GRUB CONFIGURADO. █▓▒░\n"
+echo -e "\n░▒▓█ GRUB CONFIGURADO. █▓▒░"; sleep 3
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-echo -e "░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░\n"
+echo -e "░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░"; sleep 3
 
 flatpak update -y
-echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"
+echo -e "\n░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"; sleep 3
 
 HUMAN=$(getent passwd 1000 | cut -d: -f1)
 git clone https://github.com/rafa-ga/gnome-minimal.git "/opt/gnome-minimal"
 chown -R "$HUMAN":"$HUMAN" "/opt/gnome-minimal"
 chmod +x /opt/gnome-minimal/scripts/*
-echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"
+echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"; sleep 3
 
 HUMAN_HOME=$(getent passwd "$HUMAN" | cut -d: -f6)
 mkdir -p "$HUMAN_HOME/.config/systemd/user"
@@ -203,9 +206,13 @@ RemainAfterExit=no
 WantedBy=default.target
 EOF
 
-chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
+echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 1 CREADO EN '/$HUMAN_HOME/.config/systemd/user'. █▓▒░\n"; sleep 3
 
-su - "$HUMAN" -c 'systemctl --user daemon-reload && systemctl --user enable my-gnome-minimal-post-1.service'
+chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
+ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" "$HUMAN_HOME/.config/systemd/user/default.target.wants/my-gnome-minimal-post-1.service"
+chown -h "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/default.target.wants/my-gnome-minimal-post-1.service"
+
+echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 HABILITADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
 echo -e "\n░▒▓█ 3... █▓▒░\n"; sleep 1
