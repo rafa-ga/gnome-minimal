@@ -2,14 +2,16 @@
 
 set -e
 
+echo -e "\n░▒▓█ INICIANDO TERCERA Y ÚLTIMA FASE. █▓▒░\n"; sleep 3
+
 dconf load /org/gnome/nautilus/ < "/opt/gnome-minimal/configuracion/nautilus.conf"
-echo -e "\n░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 3
 
 dconf load /org/gnome/desktop/app-folders/ < "/opt/gnome-minimal/configuracion/app-folders.conf"
-echo -e "\n░▒▓█ DASHBOARD CONFIGURADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ DASHBOARD CONFIGURADO. █▓▒░\n"; sleep 3
 
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
-
+# COMPROBAR A APRTIR DE AQUÍ LOS SALTOS DE LÍNEA.
 for ext in "$EXT_DIR"/*; do
     SCHEMAS_DIR="$ext/schemas"
 
