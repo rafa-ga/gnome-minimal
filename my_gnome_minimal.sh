@@ -211,7 +211,6 @@ echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 1 CREADO EN '/$HUMAN_HOME/.conf
 chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
 ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" "$HUMAN_HOME/.config/systemd/user/default.target.wants/my-gnome-minimal-post-1.service"
 chown -h "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/default.target.wants/my-gnome-minimal-post-1.service"
-
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 HABILITADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
