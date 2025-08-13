@@ -22,7 +22,6 @@ for ext in "$EXT_DIR"/*; do
         echo -e "\n░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
     fi
 done
-
 sleep 3
 
 dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.conf"
@@ -69,7 +68,6 @@ for i in $opciones; do
             ;;
     esac
 done
-
 sleep 3
 
 if [[ ! -f /var/lib/AccountsService/users/$(whoami) ]]; then
@@ -191,7 +189,7 @@ esac
 mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/share/applications"
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 3... █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 2... █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 1... █▓▒░\n"; sleep 1
+echo -e "3...\n"; sleep 1
+echo -e "2...\n"; sleep 1
+echo -e "1...\n"; sleep 1
 systemctl reboot
