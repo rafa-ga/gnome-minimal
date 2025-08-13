@@ -73,11 +73,11 @@ touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 systemctl --user disable --now my-gnome-minimal-post-1.service || true
 systemctl --user daemon-reload || true
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
-rm -f "$HOME/.config/systemd/user/default.target.wants/my-gnome-minimal-post-1.service"
+rm -f "$HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n"; sleep 3
 
-echo -e "\n░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 3... █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 2... █▓▒░\n"; sleep 1
-echo -e "\n░▒▓█ 1... █▓▒░\n"; sleep 1
+echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
+echo -e "3...\n"; sleep 1
+echo -e "2...\n"; sleep 1
+echo -e "1...\n"; sleep 1
 systemctl reboot
