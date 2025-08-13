@@ -2,6 +2,8 @@
 
 set -e
 
+echo -e "\n░▒▓█ INICIANDO PRIMERA FASE. █▓▒░\n"; sleep 3
+
 pacman -Syu --noconfirm
 echo -e "\n░▒▓█ SISTEMA ACTUALIZADO. █▓▒░\n"; sleep 3
 
@@ -180,7 +182,7 @@ HUMAN=$(getent passwd 1000 | cut -d: -f1)
 git clone https://github.com/rafa-ga/gnome-minimal.git "/opt/gnome-minimal"
 chown -R "$HUMAN":"$HUMAN" "/opt/gnome-minimal"
 chmod +x /opt/gnome-minimal/scripts/*
-echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt'. █▓▒░\n"; sleep 3
+echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt/gnome-minimal'. █▓▒░\n"; sleep 3
 
 HUMAN_HOME=$(getent passwd "$HUMAN" | cut -d: -f6)
 mkdir -p "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
