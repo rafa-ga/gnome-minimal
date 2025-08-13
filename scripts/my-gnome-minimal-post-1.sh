@@ -2,6 +2,8 @@
 
 set -e
 
+echo -e "\n░▒▓█ INICIANDO SEGUNDA FASE. █▓▒░\n"; sleep 3
+
 cat << 'EOF' >> "$HOME/.bashrc"
 PS1="\[\e[38;5;1250m\]\u\[\e[0m\]@\[\e[38;5;1250m\]\w\[\e[0m\] » "
 alias cc='cat'
@@ -22,7 +24,7 @@ alias vv='vim'
 alias update='yay -Syu --noconfirm'
 EOF
 source "$HOME/.bashrc"
-echo -e "\n░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 3
 
 mkdir "$HOME/.icons"
 tar -xf "/opt/gnome-minimal/icons/Reversal.tar.xz" -C "$HOME/.icons"
@@ -49,15 +51,15 @@ yay -Syu --noconfirm
 echo -e "\n░▒▓█ 'yay' ACTUALIZADO. █▓▒░\n"; sleep 3
 
 yay -S --noconfirm --needed gdm-settings gnome-shell-extension-installer
-echo -e "\n░▒▓█ INSTALADO 'gdm-settings'. █▓▒░\n"
+echo -e "\n░▒▓█ INSTALADO 'gdm-settings'. █▓▒░"
 echo -e "\n░▒▓█ INSTALADO 'gnome-shell-extension-installer'. █▓▒░\n"; sleep 3
 
 gnome-shell-extension-installer 307 3210 4269 5219 7065 --yes
 
-echo -e "\n░▒▓█ INSTALADO 'Dash to Dock'. █▓▒░\n"
-echo -e "\n░▒▓█ INSTALADO 'Compiz windows effect'. █▓▒░\n"
-echo -e "\n░▒▓█ INSTALADO 'Alphabetical App Grid'. █▓▒░\n"
-echo -e "\n░▒▓█ INSTALADO 'TopHat'. █▓▒░\n"
+echo -e "\n░▒▓█ INSTALADO 'Dash to Dock'. █▓▒░"
+echo -e "\n░▒▓█ INSTALADO 'Compiz windows effect'. █▓▒░"
+echo -e "\n░▒▓█ INSTALADO 'Alphabetical App Grid'. █▓▒░"
+echo -e "\n░▒▓█ INSTALADO 'TopHat'. █▓▒░"
 echo -e "\n░▒▓█ INSTALADO 'Tiling Shell'. █▓▒░\n"; sleep 3
 
 yay -Rns --noconfirm gnome-shell-extension-installer
@@ -69,13 +71,17 @@ echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
 systemctl --user disable --now my-gnome-minimal-post-1.service || true
+echo -e "\n░▒▓█ DISABLE. █▓▒░\n"; sleep 3
 systemctl --user daemon-reload || true
+echo -e "\n░▒▓█ RELOAD. █▓▒░\n"; sleep 3
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
+echo -e "\n░▒▓█ /user/my-gnome-minimal-post-1.service. █▓▒░\n"; sleep 3
 rm -f "$HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
+echo -e "\n░▒▓█ /user/graphical-session.target.wants/my-gnome-minimal-post-1.service. █▓▒░\n"; sleep 3
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
 echo -e "2...\n"; sleep 1
 echo -e "1...\n"; sleep 1
-systemctl reboot
+#systemctl reboot
