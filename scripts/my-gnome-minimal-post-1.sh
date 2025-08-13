@@ -66,7 +66,6 @@ echo -e "\n░▒▓█ DESINSTALADO 'gnome-shell-extension-installer'. █▓�
 pacman -Qdtq | xargs -r yay -Rns --noconfirm
 echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░\n"
 
-mkdir -p "$HOME/.config"
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
 systemctl --user disable --now my-gnome-minimal-post-1.service || true
