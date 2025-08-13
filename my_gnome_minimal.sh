@@ -18,7 +18,6 @@ elif [[ "$model" =~ AMD ]]; then
 else
     echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
 fi
-
 sleep 3
 
 pacman -S --noconfirm --needed \
@@ -130,7 +129,6 @@ elif [[ "$model" =~ AMD ]]; then
 else
     echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
 fi
-
 sleep 3
 
 for file in \
@@ -150,7 +148,6 @@ do
     echo -e "░▒▓█ '$(basename "$file")' YA ESTÁ OCULTA. █▓▒░\n"
   fi
 done
-
 sleep 3
 
 rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
