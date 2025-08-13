@@ -207,7 +207,7 @@ echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/
 
 chown "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
 ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
-chown -h "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 HABILITADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
