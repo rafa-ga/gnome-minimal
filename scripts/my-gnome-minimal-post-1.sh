@@ -22,7 +22,7 @@ alias tt='tail -f'
 alias ttt='truncate -s0'
 alias vv='vim'
 alias update='yay -Syu --noconfirm'
-PS1="\[\e[38;5;1255m\]\u\[\e[0m\]@\[\e[38;5;1255m\]\w\[\e[0m\] » "
+PS1="\[\e[38;5;255m\]\u\[\e[0m\]@\[\e[38;5;255m\]\w\[\e[0m\] » "
 EOF
 source "$HOME/.bashrc"
 echo -e "░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 3
@@ -81,7 +81,6 @@ echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n";
 
 mv "/opt/gnome-minimal/configuracion/my-gnome-minimal-post-2.service" "$HOME/.config/systemd/user"
 ln -sf "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service" "$HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-2.service"
-#chown -R "$HUMAN":"$HUMAN" "$HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 2 CREADO EN '/home/$(whoami)/.config/systemd/user'. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
