@@ -200,7 +200,7 @@ rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
 rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 3
 
-rm -rf "/opt/gnome-minimal/configuración"
+rm -rf "/opt/gnome-minimal/configuracion"
 rm -f /opt/gnome-minimal/scripts/my-gnome-minimal-post-*
 rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
 echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 3
