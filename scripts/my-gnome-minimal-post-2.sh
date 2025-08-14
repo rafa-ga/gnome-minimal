@@ -5,6 +5,7 @@ set -e
 echo -e "\n░▒▓█ INICIANDO TERCERA Y ÚLTIMA FASE. █▓▒░\n"; sleep 3
 
 rm -f "$HOME/.config/.my-gnome_minimal_post_1_done"
+touch "$HOME/.config/.my-gnome_minimal_post_2_done"
 
 dconf load /org/gnome/nautilus/ < "/opt/gnome-minimal/configuracion/nautilus.conf"
 echo -e "░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 3
@@ -193,6 +194,11 @@ esac
 mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/applications"
 chmod +x "$HOME/.local/share/applications/theme_switcher.desktop"
 echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
+
+rm -f "$HOME/.config/.my-gnome_minimal_post_2_done"
+rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
+rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
+echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
