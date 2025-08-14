@@ -4,8 +4,8 @@ set -e
 
 echo -e "\n░▒▓█ INICIANDO SEGUNDA FASE. █▓▒░\n"; sleep 3
 
+truncate -s0 "$HOME/.bashrc"
 cat << 'EOF' >> "$HOME/.bashrc"
-#
 alias cc='cat'
 alias clean='pacman -Qdtq | xargs -r yay -Rns --noconfirm && sudo paccache -r -k3'
 alias errors='journalctl -p err -b'
