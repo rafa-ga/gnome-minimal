@@ -32,7 +32,7 @@ sleep 3
 dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.conf"
 echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
 
-echo "¿QUIERES INSTALAR ALGUNAS DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
+echo "¿QUIERES INSTALAR ALGUNA DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
 echo -e "\n 0) Ninguna."
 echo " 1) Steam."
 echo " 2) Heroic Games."
