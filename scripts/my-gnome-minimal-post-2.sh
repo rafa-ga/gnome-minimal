@@ -55,6 +55,7 @@ for i in $opciones; do
         2)
             echo -e "░▒▓█ INSTALANDO 'Heroic Games Launcher'... █▓▒░\n"
             yay -S --noconfirm heroic-games-launcher
+            echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/electron36.desktop" > /dev/null
             ;;
         3)
             echo -e "░▒▓█ INSTALANDO 'Lutris'... █▓▒░\n"
