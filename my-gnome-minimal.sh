@@ -185,11 +185,22 @@ echo -e "\n░▒▓█ REPOSITORIO DE GIT CLONADO EN '/opt/gnome-minimal'. █�
 
 HUMAN_HOME=$(getent passwd "$HUMAN" | cut -d: -f6)
 mkdir -p "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
-
 mv "/opt/gnome-minimal/configuracion/my-gnome-minimal-post-1.service" "$HUMAN_HOME/.config/systemd/user"
 ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-1.service"
 chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/systemd/user'. █▓▒░\n"; sleep 3
+
+tee /etc/gdm/custom.conf > /dev/null <<EOF
+[daemon]
+AutomaticLoginEnable=true
+AutomaticLogin=$HUMAN
+WaylandEnable=true
+[security]
+[xdmcp]
+[chooser]
+[debug]
+#Enable=true
+EOF
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
