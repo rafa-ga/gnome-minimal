@@ -51,7 +51,6 @@ gnome-font-viewer \
 gnome-keyring \
 gnome-logs \
 gnome-menus \
-gnome-music \
 gnome-session \
 gnome-settings-daemon \
 gnome-shell \
