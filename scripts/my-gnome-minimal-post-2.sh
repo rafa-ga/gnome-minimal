@@ -33,7 +33,7 @@ dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.con
 echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
 
 echo "¿QUIERES INSTALAR ALGUNAS DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
-echo -e " \n0) Ninguna."
+echo -e "\n 0) Ninguna."
 echo " 1) Steam."
 echo " 2) Heroic Games."
 echo " 3) Lutris."
@@ -112,7 +112,7 @@ else
 fi
 
 echo "¿QUÉ COLOR DE SISTEMA PREFIERES? "
-echo -e " \n1) Azul      2) Cian     3) Verde"
+echo -e "\n 1) Azul      2) Cian     3) Verde"
 echo " 4) Amarillo  5) Naranja  6) Rojo"
 echo -e " 7) Rosa      8) Morado   9) Gris\n"
 read -rp "SELECCIONA [1-9]: " accent
@@ -198,7 +198,12 @@ echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
 rm -f "$HOME/.config/.my-gnome_minimal_post_2_done"
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
 rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
-echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 3
+
+rm -rf "/opt/gnome-minimal/configuración"
+rm -f /opt/gnome-minimal/scripts/my-gnome-minimal-post-*
+rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
+echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
