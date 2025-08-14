@@ -32,12 +32,12 @@ dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.con
 echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
 
 echo "¿QUIERES INSTALAR ALGUNAS DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
-echo -e "\n0) Ninguna."
-echo "1) Steam."
-echo "2) Heroic."
-echo "3) Lutris."
-echo "3) ProtonPlus."
-echo -e "4) Discord.\n"
+echo -e " \n0) Ninguna."
+echo " 1) Steam."
+echo " 2) Heroic Games."
+echo " 3) Lutris."
+echo " 4) ProtonPlus."
+echo -e " 5) Discord.\n"
 read -rp  "PUEDES ELEGIR VARIAS OPCIONES (SEPARADAS POR ESPACIOS): " opciones
 echo
 
@@ -88,14 +88,14 @@ echo
 case "$theme" in
   1)
     gsettings set org.gnome.desktop.interface color-scheme 'default'
-    echo "░▒▓█ TEMA CLARO SELECCIONADO. █▓▒░\n"
+    echo -e "░▒▓█ TEMA CLARO SELECCIONADO. █▓▒░\n"
     ;;
   2)
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    echo "░▒▓█ TEMA OSCURO SELECCIONADO. █▓▒░\n"
+    echo -e "░▒▓█ TEMA OSCURO SELECCIONADO. █▓▒░\n"
     ;;
   *)
-    echo "░▒▓█ OPCIÓN NO VÁLIDA. █▓▒░\n"
+    echo -e "░▒▓█ OPCIÓN NO VÁLIDA. █▓▒░\n"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     ;;
 esac
@@ -111,7 +111,7 @@ else
 fi
 
 echo "¿QUÉ COLOR DE SISTEMA PREFIERES? "
-echo -e "\n1) Azul      2) Cian     3) Verde"
+echo -e " \n1) Azul      2) Cian     3) Verde"
 echo " 4) Amarillo  5) Naranja  6) Rojo"
 echo -e " 7) Rosa      8) Morado   9) Gris\n"
 read -rp "SELECCIONA [1-9]: " accent
