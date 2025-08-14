@@ -49,24 +49,24 @@ for i in $opciones; do
             break
             ;;
         1)
-            echo -e "░▒▓█ INSTALANDO 'Steam'... █▓▒░\n"
+            echo -e "\n░▒▓█ INSTALANDO 'Steam'... █▓▒░\n"
             sudo pacman -Syu --noconfirm steam
             ;;
         2)
-            echo -e "░▒▓█ INSTALANDO 'Heroic Games Launcher'... █▓▒░\n"
+            echo -e "\n░▒▓█ INSTALANDO 'Heroic Games Launcher'... █▓▒░\n"
             yay -S --noconfirm heroic-games-launcher
             echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/electron36.desktop" > /dev/null
             ;;
         3)
-            echo -e "░▒▓█ INSTALANDO 'Lutris'... █▓▒░\n"
+            echo -e "\n░▒▓█ INSTALANDO 'Lutris'... █▓▒░\n"
             sudo pacman -Syu --noconfirm lutris
             ;;
         4)
-            echo -e "░▒▓█ INSTALANDO 'ProtonPlus'... █▓▒░\n"
+            echo -e "\n░▒▓█ INSTALANDO 'ProtonPlus'... █▓▒░\n"
             yay -S --noconfirm protonplus
             ;;
         5)
-            echo -e "░▒▓█ INSTALANDO 'Discord'... █▓▒░\n"
+            echo -e "\n░▒▓█ INSTALANDO 'Discord'... █▓▒░\n"
             sudo pacman -Syu --noconfirm discord
             ;;
         *)
