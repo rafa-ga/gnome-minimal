@@ -69,12 +69,17 @@ echo -e "\n░▒▓█ DESINSTALADO 'gnome-shell-extension-installer'. █▓�
 pacman -Qdtq | xargs -r yay -Rns --noconfirm
 echo -e "\n░▒▓█ DEPENDENCIAS HUÉRFANAS ELIMINADAS. █▓▒░"
 
+rm -rf "/opt/gnome-minimal/.git"
+
 touch "$HOME/.config/.my-gnome_minimal_post_1_done"
 
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-1.service"
-rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
-rm -rf "/opt/gnome-minimal/.git
 echo -e "\n░▒▓█ SERVICIO POST-INSTALACIÓN 1 ELIMINADO. █▓▒░\n"; sleep 3
+
+mv "/opt/gnome-minimal/configuracion/my-gnome-minimal-post-2.service" "$HUMAN_HOME/.config/systemd/user"
+ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-2.service" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants/my-gnome-minimal-post-2.service"
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
+echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 2 CREADO EN '$HUMAN_HOME/.config/systemd/user'. █▓▒░\n"; sleep 3
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (2/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
