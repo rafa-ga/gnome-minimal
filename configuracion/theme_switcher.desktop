@@ -3,6 +3,6 @@ Type=Application
 Name=Theme Switcher
 Comment=Theme Switcher
 Exec=/usr/bin/env bash -lc /opt/gnome-minimal/scripts/theme_switcher.sh
-Icon=applications-graphics
+Icon=xcolor
 Terminal=true
 Categories=Utility;
