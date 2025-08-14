@@ -28,8 +28,10 @@ source "$HOME/.bashrc"
 echo -e "░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 3
 
 mkdir "$HOME/.icons"
-tar -xf "/opt/gnome-minimal/icons/Reversal.tar.xz" -C "$HOME/.icons"
-rm -rf "/opt/gnome-minimal/icons"
+tar -xf "/opt/gnome-minimal/iconos/BigSur.tar.xz" -C "$HOME/.icons"
+tar -xf "/opt/gnome-minimal/iconos/Reversal.tar.xz" -C "$HOME/.icons"
+tar -xf "/opt/gnome-minimal/iconos/Tahoe.tar.xz" -C "$HOME/.icons"
+rm -rf "/opt/gnome-minimal/iconos"
 
 gsettings set org.gnome.desktop.interface icon-theme Reversal
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
@@ -52,6 +54,7 @@ yay -Syu --noconfirm
 echo -e "\n░▒▓█ 'yay' ACTUALIZADO. █▓▒░\n"; sleep 3
 
 yay -S --noconfirm --needed gapless gdm-settings gnome-shell-extension-installer
+echo -e "\n░▒▓█ INSTALADO 'gapless'. █▓▒░"
 echo -e "\n░▒▓█ INSTALADO 'gdm-settings'. █▓▒░"
 echo -e "\n░▒▓█ INSTALADO 'gnome-shell-extension-installer'. █▓▒░\n"; sleep 3
 
