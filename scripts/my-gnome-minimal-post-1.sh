@@ -51,7 +51,7 @@ sleep 3
 yay -Syu --noconfirm
 echo -e "\n░▒▓█ 'yay' ACTUALIZADO. █▓▒░\n"; sleep 3
 
-yay -S --noconfirm --needed gdm-settings gnome-shell-extension-installer
+yay -S --noconfirm --needed gapless gdm-settings gnome-shell-extension-installer
 echo -e "\n░▒▓█ INSTALADO 'gdm-settings'. █▓▒░"
 echo -e "\n░▒▓█ INSTALADO 'gnome-shell-extension-installer'. █▓▒░\n"; sleep 3
 
