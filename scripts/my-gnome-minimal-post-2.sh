@@ -50,7 +50,7 @@ for i in $opciones; do
             ;;
         1)
             echo -e "░▒▓█ INSTALANDO 'Steam'... █▓▒░\n"
-            pacman -Syu --noconfirm steam
+            sudo pacman -Syu --noconfirm steam
             ;;
         2)
             echo -e "░▒▓█ INSTALANDO 'Heroic Games Launcher'... █▓▒░\n"
@@ -58,7 +58,7 @@ for i in $opciones; do
             ;;
         3)
             echo -e "░▒▓█ INSTALANDO 'Lutris'... █▓▒░\n"
-            pacman -Syu --noconfirm lutris
+            sudo pacman -Syu --noconfirm lutris
             ;;
         4)
             echo -e "░▒▓█ INSTALANDO 'ProtonPlus'... █▓▒░\n"
@@ -66,7 +66,7 @@ for i in $opciones; do
             ;;
         5)
             echo -e "░▒▓█ INSTALANDO 'Discord'... █▓▒░\n"
-            pacman -Syu --noconfirm discord
+            sudo pacman -Syu --noconfirm discord
             ;;
         *)
             echo "░▒▓█ '$i' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
