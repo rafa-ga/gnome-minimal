@@ -97,20 +97,20 @@ for j in $tools; do
             ;;
         2)
             echo -e "\n░▒▓█ INSTALANDO 'Code'... █▓▒░\n"
-			      sudo pacman -S --noconfirm code
-			      echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/electron37.desktop" > /dev/null
+            sudo pacman -S --noconfirm code
+            echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/electron37.desktop" > /dev/null
             ;;
         3)
             echo -e "\n░▒▓█ INSTALANDO 'GPU Screen Recorder'... █▓▒░\n"
             yay -S --noconfirm gpu-screen-recorder gpu-screen-recorder-gtk
             ;;
-		4)
+        4)
             echo -e "\n░▒▓█ INSTALANDO 'Soporte para dongle oficial de Microsoft'... █▓▒░\n"
             yay -S --noconfirm xone-dkms-git xone-dongle-firmware
-			      echo xone-dongle | sudo tee /etc/modules-load.d/xone.conf
-			      echo "blacklist xpad" | sudo tee /etc/modprobe.d/blacklist-xpad.conf
+            echo xone-dongle | sudo tee /etc/modules-load.d/xone.conf
+            echo "blacklist xpad" | sudo tee /etc/modprobe.d/blacklist-xpad.conf
             ;;
-		5)
+        5)
             echo -e "\n░▒▓█ INSTALANDO 'Spotify'... █▓▒░\n"
             yay -S --noconfirm spotify
             ;;
@@ -137,6 +137,9 @@ SystemAccount=false
 EOF
 fi
 
+sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
+
+echo
 read -rp "¿QUÉ TEMA PREFIERES? CLARO (1) U OSCURO (2): " theme
 case "$theme" in
   1)
@@ -163,7 +166,7 @@ else
     SCHEME="picture-uri-dark"
 fi
 
-echo "¿QUÉ COLOR DE SISTEMA PREFIERES? "
+echo -e "\n¿QUÉ COLOR DE SISTEMA PREFIERES? "
 echo -e "\n 1) Azul      2) Cian     3) Verde"
 echo " 4) Amarillo  5) Naranja  6) Rojo"
 echo -e " 7) Rosa      8) Morado   9) Gris\n"
@@ -244,6 +247,7 @@ esac
 
 mv "/opt/gnome-minimal/scripts/theme_switcher.sh" "$HOME/.config"
 chmod +x "$HOME/.config/theme_switcher.sh"
+mkdir -p "$HOME/.local/share/applications"
 mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share/applications"
 chmod +x "$HOME/.local/share/applications/theme_switcher.desktop"
 echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
