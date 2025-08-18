@@ -2,7 +2,7 @@
 Type=Application
 Name=Theme Switcher
 Comment=Theme Switcher
-Exec=/usr/bin/env bash -lc /opt/gnome-minimal/scripts/theme_switcher.sh
+Exec=/usr/bin/env bash -lc "$HOME/.config/theme_switcher.sh"
 Icon=xcolor
 Terminal=true
 Categories=Utility;
