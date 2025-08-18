@@ -252,15 +252,14 @@ mv "/opt/gnome-minimal/configuracion/theme_switcher.desktop" "$HOME/.local/share
 chmod +x "$HOME/.local/share/applications/theme_switcher.desktop"
 echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
 
-rm -f "$HOME/.config/.my-gnome_minimal_post_2_done"
-rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
+rm -f "$HOME/.config/.my-gnome_minimal_post_2_done" "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
 rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 1
 
-rm -rf "/opt/gnome-minimal/configuracion"
-rm -rf "/opt/gnome-minimal/scripts"
-rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
-# rm -rf "/opt/gnome-minimal"
+# rm -rf "/opt/gnome-minimal/configuracion"
+# rm -rf "/opt/gnome-minimal/scripts"
+# rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
+rm -rf "/opt/gnome-minimal"
 echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 1
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
