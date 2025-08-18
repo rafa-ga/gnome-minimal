@@ -87,6 +87,7 @@ sushi \
 tar \
 timeshift \
 unrar \
+vi \
 vim \
 vlc \
 vlc-plugins-all \
@@ -182,12 +183,13 @@ echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/
 
 mkdir -p "$HUMAN_HOME/.local/share/backgrounds"
 mv /opt/gnome-minimal/imagenes/wallpaper* "$HUMAN_HOME/.local/share/backgrounds"
-chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share" #.local/share/applications?
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share"
 rm -f /usr/share/pixmaps/faces/*
 mv /opt/gnome-minimal/imagenes/avatar* "/usr/share/pixmaps/faces"
-chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons"
-rm -rf "/opt/gnome-minimal/imagenes"
-rm -rf "/opt/gnome-minimal/.git"
+mv "/opt/gnome-minimal/imagenes/placeholder" "/var/lib/AccountsService/icons/$HUMAN"
+chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons/$HUMAN"
+rm -rf "/opt/gnome-minimal/imagenes" "/opt/gnome-minimal/.git"
+echo -e "░▒▓█ AVATARES Y WALLPAPERS AÑADIDOS. █▓▒░\n"; sleep 1
 
 tee /etc/gdm/custom.conf > /dev/null <<EOF
 [daemon]
@@ -200,6 +202,9 @@ WaylandEnable=true
 [debug]
 #Enable=true
 EOF
+echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$HUMAN' ACTIVADO. █▓▒░\n"; sleep 1
+
+echo "$HUMAN ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (1/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
