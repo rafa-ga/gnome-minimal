@@ -187,7 +187,7 @@ chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share"
 rm -f /usr/share/pixmaps/faces/*
 mv /opt/gnome-minimal/imagenes/avatar* "/usr/share/pixmaps/faces"
 mv "/opt/gnome-minimal/imagenes/placeholder" "/var/lib/AccountsService/icons/$HUMAN"
-chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons/$HUMAN"
+chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons"
 rm -rf "/opt/gnome-minimal/imagenes" "/opt/gnome-minimal/.git"
 echo -e "░▒▓█ AVATARES Y WALLPAPERS AÑADIDOS. █▓▒░\n"; sleep 1
 
