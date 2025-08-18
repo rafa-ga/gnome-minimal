@@ -180,6 +180,14 @@ ln -sf "$HUMAN_HOME/.config/systemd/user/my-gnome-minimal-post-1.service" "$HUMA
 chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/systemd/user'. █▓▒░\n"; sleep 1
 
+mv /opt/gnome-minimal/imagenes/wallpaper* "$HUMAN_HOME/.local/share/backgrounds"
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share/backgrounds"
+rm -f /usr/share/pixmaps/faces/*
+mv /opt/gnome-minimal/imagenes/avatar* "/usr/share/pixmaps/faces"
+chown -R "$HUMAN":"$HUMAN" "/usr/share/pixmaps/faces"
+chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons"
+rm -rf "/opt/gnome-minimal/imagenes"
+
 tee /etc/gdm/custom.conf > /dev/null <<EOF
 [daemon]
 AutomaticLoginEnable=true
