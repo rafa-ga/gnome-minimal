@@ -147,7 +147,20 @@ SystemAccount=false
 EOF
 fi
 
-#sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
+read -rp "Revisar '/var/lib/AccountsService/icons/naoki'. OK (1) NOT OK (2): " icon
+
+case "$icon" in
+  1)
+    echo -e "\n░▒▓█ OK. █▓▒░\n"
+    ;;
+  2)
+    echo -e "\n░▒▓█ NOT OK. █▓▒░\n"
+    sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
+    ;;
+  *)
+    echo -e "\n░▒▓█ YOU'VE FAILED SELECTING BETWEEN TWO OPTIONS. JUST TWO. █▓▒░\n"
+    ;;
+esac
 
 echo
 read -rp "¿QUÉ TEMA PREFIERES? CLARO (1) U OSCURO (2): " theme
@@ -269,7 +282,7 @@ echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; s
 # rm -rf "/opt/gnome-minimal/configuracion"
 # rm -rf "/opt/gnome-minimal/scripts"
 # rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
-rm -rf "/opt/gnome-minimal"
+sudo rm -rf "/opt/gnome-minimal"
 echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 1
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
