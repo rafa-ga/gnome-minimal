@@ -137,7 +137,7 @@ SystemAccount=false
 EOF
 fi
 
-sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
+#sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
 
 echo
 read -rp "¿QUÉ TEMA PREFIERES? CLARO (1) U OSCURO (2): " theme
