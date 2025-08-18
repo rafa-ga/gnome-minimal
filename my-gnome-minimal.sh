@@ -182,12 +182,12 @@ echo -e "░▒▓█ DAEMON POST-INSTALACIÓN 1 CREADO EN '$HUMAN_HOME/.config/
 
 mkdir -p "$HUMAN_HOME/.local/share/backgrounds"
 mv /opt/gnome-minimal/imagenes/wallpaper* "$HUMAN_HOME/.local/share/backgrounds"
-chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share/backgrounds"
+chown -R "$HUMAN":"$HUMAN" "$HUMAN_HOME/.local/share" #.local/share/applications?
 rm -f /usr/share/pixmaps/faces/*
 mv /opt/gnome-minimal/imagenes/avatar* "/usr/share/pixmaps/faces"
-#chown -R "$HUMAN":"$HUMAN" "/usr/share/pixmaps/faces"
 chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons"
 rm -rf "/opt/gnome-minimal/imagenes"
+rm -rf "/opt/gnome-minimal/.git"
 
 tee /etc/gdm/custom.conf > /dev/null <<EOF
 [daemon]
