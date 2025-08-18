@@ -39,10 +39,10 @@ echo " 2) Heroic Games."
 echo " 3) Lutris."
 echo " 4) ProtonPlus."
 echo -e " 5) Discord.\n"
-read -rp  "PUEDES ELEGIR VARIAS OPCIONES (SEPARADAS POR ESPACIOS): " opciones
+read -rp  "PUEDES ELEGIR VARIAS OPCIONES (SEPARADAS POR ESPACIOS): " gapps
 echo
 
-for i in $opciones; do
+for i in $gapps; do
     case "$i" in
         0)
             echo -e "░▒▓█ NO SE INSTALARÁ NINGUNA APLICACIÓN █▓▒░\n"
@@ -70,7 +70,58 @@ for i in $opciones; do
             sudo pacman -Syu --noconfirm discord
             ;;
         *)
-            echo "░▒▓█ '$i' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
+            echo "\n░▒▓█ '$i' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
+            ;;
+    esac
+done
+sleep 3
+
+echo "¿QUIERES INSTALAR ALGUNA DE LAS SIGUIENTES HERRAMIENTAS?"
+echo -e "\n 0) Ninguna."
+echo " 1) CherryTree (cuaderno de notas)."
+echo " 2) Code (build open-source de VSCode)."
+echo " 3) GPU Screen Recorder (grabador de pantalla)."
+echo " 4) Soporte para dongle oficial de Microsoft."
+echo " 5) Spotify."
+echo -e " 6) Upscaler (reescalador de imágenes).\n"
+read -rp  "PUEDES ELEGIR VARIAS OPCIONES (SEPARADAS POR ESPACIOS): " tools
+echo
+
+for j in $tools; do
+    case "$j" in
+        0)
+            echo -e "░▒▓█ NO SE INSTALARÁ NINGUNA APLICACIÓN █▓▒░\n"
+            break
+            ;;
+        1)
+            echo -e "\n░▒▓█ INSTALANDO 'CherryTree'... █▓▒░\n"
+            sudo pacman -Syu --noconfirm cherrytree
+            ;;
+        2)
+            echo -e "\n░▒▓█ INSTALANDO 'Code'... █▓▒░\n"
+			sudo pacman -Syu --noconfirm code
+			echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/electron36.desktop" > /dev/null
+            ;;
+        3)
+            echo -e "\n░▒▓█ INSTALANDO 'GPU Screen Recorder'... █▓▒░\n"
+            yay -S --noconfirm gpu-screen-recorder gpu-screen-recorder-gtk
+            ;;
+		4)
+            echo -e "\n░▒▓█ INSTALANDO 'Soporte para dongle oficial de Microsoft'... █▓▒░\n"
+            yay -S --noconfirm xone-dkms-git xone-dongle-firmware
+			echo xone-dongle | sudo tee /etc/modules-load.d/xone.conf
+			echo "blacklist xpad" | sudo tee /etc/modprobe.d/blacklist-xpad.conf
+            ;;
+		5)
+            echo -e "\n░▒▓█ INSTALANDO 'Spotify'... █▓▒░\n"
+            yay -S --noconfirm spotify
+            ;;
+        6)
+            echo -e "\n░▒▓█ INSTALANDO 'Upscaler'... █▓▒░\n"
+            yay -S --noconfirm upscaler
+            ;;
+        *)
+            echo "\n░▒▓█ '$j' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
             ;;
     esac
 done
