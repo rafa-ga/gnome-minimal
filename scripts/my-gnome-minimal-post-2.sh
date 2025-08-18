@@ -2,16 +2,16 @@
 
 set -e
 
-echo -e "\n░▒▓█ INICIANDO TERCERA Y ÚLTIMA FASE. █▓▒░\n"; sleep 3
+echo -e "\n░▒▓█ INICIANDO TERCERA Y ÚLTIMA FASE. █▓▒░\n"; sleep 1
 
 rm -f "$HOME/.config/.my-gnome_minimal_post_1_done"
 touch "$HOME/.config/.my-gnome_minimal_post_2_done"
 
 dconf load /org/gnome/nautilus/ < "/opt/gnome-minimal/configuracion/nautilus.conf"
-echo -e "░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ 'Nautilus' CONFIGURADO. █▓▒░\n"; sleep 1
 
 dconf load /org/gnome/desktop/app-folders/ < "/opt/gnome-minimal/configuracion/app-folders.conf"
-echo -e "░▒▓█ DASHBOARD CONFIGURADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ DASHBOARD CONFIGURADO. █▓▒░\n"; sleep 1
 
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
 
@@ -27,10 +27,10 @@ for ext in "$EXT_DIR"/*; do
         echo -e "░▒▓█ ACTIVADO '$(basename "$ext")'. █▓▒░\n"
     fi
 done
-sleep 3
+sleep 1
 
 dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.conf"
-echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 1
 
 echo "¿QUIERES INSTALAR ALGUNA DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
 echo -e "\n 0) Ninguna."
@@ -73,7 +73,7 @@ for i in $gapps; do
             ;;
     esac
 done
-sleep 3
+sleep 1
 
 echo "¿QUIERES INSTALAR ALGUNA DE LAS SIGUIENTES HERRAMIENTAS?"
 echo -e "\n 0) Ninguna."
@@ -123,11 +123,11 @@ for j in $tools; do
             ;;
     esac
 done
-sleep 3
+sleep 1
 
 mv "/opt/gnome-minimal/configuracion/mimeapps.list" "$HOME/.config"
 chmod 600 "$HOME/.config/mimeapps.list"
-echo -e "░▒▓█ TIPOS DE ARCHIVOS ASOCIADOS. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ TIPOS DE ARCHIVOS ASOCIADOS. █▓▒░\n"; sleep 1
 
 if [[ ! -f /var/lib/AccountsService/users/$(whoami) ]]; then
 sudo tee /var/lib/AccountsService/users/$(whoami) > /dev/null <<EOF
@@ -255,13 +255,13 @@ echo -e "░▒▓█ AÑADIDO 'Theme Switcher' AL DASHBOARD. █▓▒░\n"
 rm -f "$HOME/.config/.my-gnome_minimal_post_2_done"
 rm -f "$HOME/.config/systemd/user/my-gnome-minimal-post-2.service"
 rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
-echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 1
 
 rm -rf "/opt/gnome-minimal/configuracion"
 rm -rf "/opt/gnome-minimal/scripts"
 rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
 # rm -rf "/opt/gnome-minimal"
-echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 3
+echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 1
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
