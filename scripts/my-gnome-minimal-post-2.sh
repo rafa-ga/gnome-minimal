@@ -147,21 +147,6 @@ SystemAccount=false
 EOF
 fi
 
-read -rp "Revisar '/var/lib/AccountsService/icons/naoki'. OK (1) NOT OK (2): " icon
-
-case "$icon" in
-  1)
-    echo -e "\n░▒▓█ OK. █▓▒░\n"
-    ;;
-  2)
-    echo -e "\n░▒▓█ NOT OK. █▓▒░\n"
-    sudo chown $(whoami):$(whoami) "/var/lib/AccountsService/icons/$(whoami)"
-    ;;
-  *)
-    echo -e "\n░▒▓█ YOU'VE FAILED SELECTING BETWEEN TWO OPTIONS. JUST TWO. █▓▒░\n"
-    ;;
-esac
-
 echo
 read -rp "¿QUÉ TEMA PREFIERES? CLARO (1) U OSCURO (2): " theme
 case "$theme" in
