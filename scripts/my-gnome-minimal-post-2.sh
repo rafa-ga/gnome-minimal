@@ -279,11 +279,13 @@ rm -f "$HOME/.config/.my-gnome_minimal_post_2_done" "$HOME/.config/systemd/user/
 rm -rf "$HOME/.config/systemd/user/graphical-session.target.wants"
 echo -e "░▒▓█ SERVICIO POST-INSTALACIÓN 2 ELIMINADO. █▓▒░\n"; sleep 1
 
-# rm -rf "/opt/gnome-minimal/configuracion"
-# rm -rf "/opt/gnome-minimal/scripts"
-# rm -f "/opt/gnome-minimal/my-gnome-minimal.sh"
 sudo rm -rf "/opt/gnome-minimal"
 echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep 1
+
+sudo sed -i '/^AutomaticLogin/ s/^/#/' /etc/gdm/custom.conf
+echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$(whoami)' DESHABILITADO. █▓▒░\n"; sleep 1
+
+sudo sed -i '${/^.*NOPASSWD:.*$/d}' /etc/sudoers
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
