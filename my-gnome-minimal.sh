@@ -29,6 +29,7 @@ bluez \
 bluez-utils \
 cifs-utils \
 curl \
+diffutils \
 dkms \
 efibootmgr \
 evince \
@@ -37,6 +38,7 @@ ffmpeg \
 ffmpegthumbnailer \
 file-roller \
 flatpak \
+findutils \
 gdm \
 git \
 glib2 \
@@ -63,6 +65,8 @@ gvfs \
 gvfs-nfs \
 gvfs-smb \
 gvfs-wsdd \
+hunspell-es_es \
+inetutils \
 less \
 libheif \
 linux-zen-headers \
@@ -87,6 +91,7 @@ sushi \
 tar \
 timeshift \
 unrar \
+util-linux \
 vi \
 vim \
 vlc \
