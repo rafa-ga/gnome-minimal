@@ -272,6 +272,10 @@ echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$(whoami)' DESHABILITADO. █▓�
 
 sudo sed -i '${/^.*NOPASSWD:.*$/d}' /etc/sudoers
 
+sudo systemctl disable systemd-networkd
+sudo systemctl disable systemd-resolved
+echo -e "░▒▓█ DESHABILITADOS 'systemd-networkd' Y 'systemd-resolved'. █▓▒░\n"; sleep 1
+
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
 echo -e "2...\n"; sleep 1
