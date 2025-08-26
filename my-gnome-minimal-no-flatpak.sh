@@ -153,7 +153,6 @@ tee /boot/loader/loader.conf > /dev/null <<'EOF'
 timeout 3
 console-mode auto
 editor no
-auto-entries no
 EOF
 echo -e "░▒▓█ CONFIGURADO 'systemd-boot'. █▓▒░\n"
 
