@@ -157,13 +157,6 @@ console-mode auto
 editor no
 auto-entries no
 EOF
-
-touch /boot/loader/entries/w11.conf
-tee /boot/loader/entries/w11.conf > /dev/null <<'EOF'
-title Windows 11
-efi /EFI/Microsoft/Boot/bootmgfw.efi
-sort-key 30-w11
-EOF
 echo -e "░▒▓█ CONFIGURADO 'systemd-boot'. █▓▒░\n"
 
 for file in \
