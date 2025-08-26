@@ -270,11 +270,11 @@ echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep
 sudo sed -i '/^AutomaticLogin/ s/^/#/' /etc/gdm/custom.conf
 echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$(whoami)' DESHABILITADO. █▓▒░\n"; sleep 1
 
-sudo sed -i '${/^.*NOPASSWD:.*$/d}' /etc/sudoers
-
 sudo systemctl disable systemd-networkd
 sudo systemctl disable systemd-resolved
 echo -e "░▒▓█ DESHABILITADOS 'systemd-networkd' Y 'systemd-resolved'. █▓▒░\n"; sleep 1
+
+sudo sed -i '${/^.*NOPASSWD:.*$/d}' /etc/sudoers
 
 echo -e "░▒▓█ EL SISTEMA SE REINICIARÁ (3/3) EN: █▓▒░\n"; sleep 1
 echo -e "3...\n"; sleep 1
