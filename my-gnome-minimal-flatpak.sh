@@ -120,6 +120,17 @@ echo -e "\n░▒▓█ BLUETOOTH HABILITADO E INICIADO. █▓▒░\n"; sleep 
 systemctl enable gdm
 echo -e "\n░▒▓█ 'gdm' HABILITADO. █▓▒░\n"; sleep 1
 
+if ! grep -qx '\[multilib\]' /etc/pacman.conf; then
+    echo -e '\n[multilib]' >> /etc/pacman.conf
+    echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+    echo -e "░▒▓█ REPOSITORIO 'multilib' HABILITADO. █▓▒░\n"; sleep 3
+    pacman -Sy --noconfirm
+    echo -e "\n░▒▓█ REPOSITORIO 'multilib' ACTUALIZADO. █▓▒░\n"
+else
+    pacman -Sy --noconfirm
+    echo -e "\n░▒▓█ REPOSITORIO 'multilib' ACTUALIZADO. █▓▒░\n"
+fi
+
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
     echo -e "░▒▓█ NO SE INSTALARÁ NINGÚN PAQUETE PARA GAMING. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
@@ -155,7 +166,6 @@ tee /boot/loader/loader.conf > /dev/null <<'EOF'
 timeout 3
 console-mode auto
 editor no
-auto-entries no
 EOF
 echo -e "░▒▓█ CONFIGURADO 'systemd-boot'. █▓▒░\n"
 
