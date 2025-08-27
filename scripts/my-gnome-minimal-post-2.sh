@@ -32,6 +32,28 @@ sleep 1
 dconf load /org/gnome/shell/ < "/opt/gnome-minimal/configuracion/gnome-shell.conf"
 echo -e "░▒▓█ EXTENSIONES CONFIGURADAS. █▓▒░\n"; sleep 1
 
+read -rp  "¿QUIERES INSTALAR 'Flatpak'? SI (1), NO (2): " flat
+echo
+
+case "$flat" in
+  1)
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	echo -e "░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░"; sleep 1
+
+	flatpak update -y
+	echo -e "░▒▓█ 'Flatpak' ACTUALIZADO. █▓▒░\n"; sleep 1
+
+	flatpak install -y flatseal
+	echo -e "░▒▓█ 'Flatseal' INSTALADO. █▓▒░\n"; sleep 1
+    ;;
+  2)
+    echo -e "░▒▓█ NO SE INSTALARÁ 'Flatpak'. █▓▒░\n"
+    ;;
+  *)
+    echo -e "░▒▓█ '$flat' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
+    ;;
+esac
+
 echo "¿QUIERES INSTALAR ALGUNA DE LAS SIGUIENTES APLICACIONES PARA GAMING?"
 echo -e "\n 0) Ninguna."
 echo " 1) Discord."
