@@ -23,6 +23,7 @@ fi
 sleep 1
 
 pacman -S --noconfirm --needed \
+avahi \
 baobab \
 base-devel \
 bind \
@@ -60,9 +61,16 @@ gnome-shell \
 gnome-shell-extensions \
 gnome-terminal \
 gnome-text-editor \
+grilo-plugins \
 gst-libav \
 gvfs \
+gvfs-afc \
+gvfs-dnssd \
+gvfs-goa \
+gvfs-google \
+gvfs-mtp \
 gvfs-nfs \
+gvfs-onedrive \
 gvfs-smb \
 gvfs-wsdd \
 hunspell-es_es \
@@ -82,6 +90,8 @@ nautilus \
 networkmanager \
 nfs-utils \
 ntfs-3g \
+nss-mdns \
+openssh \
 pacman-contrib \
 pipewire \
 pipewire-audio \
@@ -90,6 +100,7 @@ pipewire-pulse \
 power-profiles-daemon \
 qt5-base \
 qt6-base \
+smartmontools \
 sushi \
 tar \
 timeshift \
@@ -105,6 +116,8 @@ wget \
 wireplumber \
 xdg-desktop-portal \
 xdg-desktop-portal-gnome \
+xdg-user-dirs-gtk \
+xdg-utils \
 xorg-xwayland \
 xz
 echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"; sleep 1
@@ -121,10 +134,10 @@ echo -e "\n░▒▓█ 'gdm' HABILITADO. █▓▒░\n"; sleep 1
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
     echo -e "░▒▓█ NO SE INSTALARÁ NINGÚN PAQUETE PARA GAMING. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
-    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode
+    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode intel-media-driver libva-intel-driver sof-firmware
     echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
-    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud xf86-video-amdgpu
+    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud xf86-video-amdgpu libva-mesa-driver
     echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 else
     echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
