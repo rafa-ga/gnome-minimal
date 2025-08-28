@@ -49,7 +49,7 @@ fi
 sleep 1
 
 yay -Syu --noconfirm
-echo -e "\n░▒▓█ 'yay' ACTUALIZADO. █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ REPOSITORIO 'AUR' ACTUALIZADO. █▓▒░\n"; sleep 1
 
 yay -S --noconfirm --needed gapless gdm-settings gnome-shell-extension-installer
 echo -e "\n░▒▓█ INSTALADO 'gapless'. █▓▒░"
