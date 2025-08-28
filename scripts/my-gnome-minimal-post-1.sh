@@ -28,14 +28,12 @@ source "$HOME/.bashrc"
 echo -e "░▒▓█ ALIASES AÑADIDOS. █▓▒░\n"; sleep 1
 
 mkdir "$HOME/.icons"
-tar -xf "/opt/gnome-minimal/iconos/BigSur.tar.xz" -C "$HOME/.icons"
 tar -xf "/opt/gnome-minimal/iconos/Reversal.tar.xz" -C "$HOME/.icons"
-tar -xf "/opt/gnome-minimal/iconos/Tahoe.tar.xz" -C "$HOME/.icons"
 rm -rf "/opt/gnome-minimal/iconos"
 
-gsettings set org.gnome.desktop.interface icon-theme Reversal
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+gsettings set org.gnome.desktop.interface icon-theme Reversal; sleep 1
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'; sleep 1
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250; sleep 1
 
 if ! command -v yay &>/dev/null; then
     cd "$HOME"
