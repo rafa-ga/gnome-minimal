@@ -139,8 +139,8 @@ for j in $tools; do
         6)
             echo -e "\n░▒▓█ INSTALANDO 'Soporte para dongle oficial de Microsoft'... █▓▒░\n"
             yay -S --noconfirm xone-dkms-git xone-dongle-firmware
-            echo xone-dongle | sudo tee /etc/modules-load.d/xone.conf
-            echo "blacklist xpad" | sudo tee /etc/modprobe.d/blacklist-xpad.conf
+            #echo xone-dongle | sudo tee /etc/modules-load.d/xone.conf
+            #echo "blacklist xpad" | sudo tee /etc/modprobe.d/blacklist-xpad.conf
             ;;
         7)
             echo -e "\n░▒▓█ INSTALANDO 'Spotify'... █▓▒░\n"
@@ -149,6 +149,7 @@ for j in $tools; do
         8)
             echo -e "\n░▒▓█ INSTALANDO 'Upscaler'... █▓▒░\n"
             yay -S --noconfirm upscaler
+            echo 'NoDisplay=true' | sudo tee -a "/usr/share/applications/cmake-gui.desktop" > /dev/null
             ;;
         *)
             echo -e "\n░▒▓█ '$j' NO ES UNA OPCIÓN VÁLIDA. █▓▒░\n"
