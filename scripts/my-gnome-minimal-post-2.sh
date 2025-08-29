@@ -294,14 +294,14 @@ sudo sed -i '/^AutomaticLogin/ s/^/#/' /etc/gdm/custom.conf
 echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$(whoami)' DESHABILITADO. █▓▒░\n"; sleep 1
 
 sudo mkdir -p /etc/NetworkManager/conf.d
-echo -e "[device]\nwifi.backend=iwd" | sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf
+echo -e "[device]\nwifi.backend=iwd" | sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf > /dev/null
 sudo systemctl disable --now wpa_supplicant.service
 sudo systemctl mask wpa_supplicant.service
-echo -e "░▒▓█ DESHABILITADO 'wpa_supplicant' Y HABILITADO 'iwd'. █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ DESHABILITADO 'wpa_supplicant' Y HABILITADO 'iwd'. █▓▒░\n"; sleep 1
 
 sudo systemctl disable --now systemd-networkd.service systemd-networkd.socket systemd-networkd-wait-online.service systemd-resolved.service
 sudo systemctl mask systemd-networkd.service systemd-networkd.socket systemd-networkd-wait-online.service systemd-resolved.service
-echo -e "░▒▓█ DESHABILITADOS 'systemd-networkd' Y 'systemd-resolved'. █▓▒░\n"; sleep 1
+echo -e "\n░▒▓█ DESHABILITADOS 'systemd-networkd' Y 'systemd-resolved'. █▓▒░\n"; sleep 1
 
 sudo sed -i '${/^.*NOPASSWD:.*$/d}' /etc/sudoers
 
