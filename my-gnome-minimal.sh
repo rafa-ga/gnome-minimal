@@ -122,9 +122,6 @@ xorg-xwayland \
 xz
 echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"; sleep 1
 
-systemctl start NetworkManager && systemctl enable NetworkManager
-echo -e "\n░▒▓█ 'NetworkManager' HABILITADO E INICIADO. █▓▒░\n"; sleep 1
-
 systemctl start bluetooth && systemctl enable bluetooth
 echo -e "\n░▒▓█ BLUETOOTH HABILITADO E INICIADO. █▓▒░\n"; sleep 1
 
