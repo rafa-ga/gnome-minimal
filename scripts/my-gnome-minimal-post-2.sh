@@ -293,6 +293,9 @@ echo -e "░▒▓█ SCRIPTS DE INSTALACIÓN ELIMINADOS. █▓▒░\n"; sleep
 sudo sed -i '/^AutomaticLogin/ s/^/#/' /etc/gdm/custom.conf
 echo -e "░▒▓█ LOGIN AUTOMÁTICO PARA '$(whoami)' DESHABILITADO. █▓▒░\n"; sleep 1
 
+systemctl start NetworkManager && systemctl enable NetworkManager
+echo -e "\n░▒▓█ 'NetworkManager' HABILITADO E INICIADO. █▓▒░\n"; sleep 1
+
 sudo mkdir -p /etc/NetworkManager/conf.d
 echo -e "[device]\nwifi.backend=iwd" | sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf > /dev/null
 sudo systemctl disable --now wpa_supplicant.service
