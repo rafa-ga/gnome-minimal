@@ -122,9 +122,6 @@ xorg-xwayland \
 xz
 echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"; sleep 1
 
-systemctl start NetworkManager && systemctl enable NetworkManager
-echo -e "\n░▒▓█ 'NetworkManager' HABILITADO E INICIADO. █▓▒░\n"; sleep 1
-
 systemctl start bluetooth && systemctl enable bluetooth
 echo -e "\n░▒▓█ BLUETOOTH HABILITADO E INICIADO. █▓▒░\n"; sleep 1
 
@@ -144,27 +141,21 @@ else
 fi
 sleep 1
 
-# for i in /boot/loader/entries/*; do
-#     case "$i" in
-#         *-fallback.conf)
-#             mv -- "$i" "${i}_BCK"
-#             ;;
-#     esac
-# done
-
 if ls /boot/loader/entries/*linux.conf >/dev/null 2>&1; then
     sed -i 's/^title.*/title Arch/' /boot/loader/entries/*linux.conf
+    sed -i '/^options/ s/$/ quiet loglevel=3 systemd.show_status=1 rd.systemd.show_status=1/' /boot/loader/entries/*linux.conf
     echo "sort-key 10-arch" >> /boot/loader/entries/*linux.conf
 fi
 
 if ls /boot/loader/entries/*linux-zen.conf >/dev/null 2>&1; then
     sed -i 's/^title.*/title Arch Zen/' /boot/loader/entries/*linux-zen.conf
+    sed -i '/^options/ s/$/ quiet loglevel=3 systemd.show_status=1 rd.systemd.show_status=1/' /boot/loader/entries/*linux-zen.conf
     echo "sort-key 20-arch_zen" >> /boot/loader/entries/*linux-zen.conf
 fi
 
 if ls /boot/loader/entries/*linux-fallback.conf >/dev/null 2>&1; then
     sed -i 's/^title.*/title Arch (fallback)/' /boot/loader/entries/*linux-fallback.conf
-    echo "sort-key 30-arch" >> /boot/loader/entries/*linux.conf
+    echo "sort-key 30-arch" >> /boot/loader/entries/*linux-fallback.conf
 fi
 
 if ls /boot/loader/entries/*linux-zen-fallback.conf >/dev/null 2>&1; then
@@ -173,9 +164,11 @@ if ls /boot/loader/entries/*linux-zen-fallback.conf >/dev/null 2>&1; then
 fi
 
 tee /boot/loader/loader.conf > /dev/null <<'EOF'
+default @saved
 timeout 3
 console-mode auto
 editor no
+auto-firmware no
 EOF
 echo -e "░▒▓█ CONFIGURADO 'systemd-boot'. █▓▒░\n"
 
