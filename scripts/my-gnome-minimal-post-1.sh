@@ -31,6 +31,8 @@ mkdir "$HOME/.icons"
 tar -xf "/opt/gnome-minimal/iconos/Reversal.tar.xz" -C "$HOME/.icons"
 rm -rf "/opt/gnome-minimal/iconos"
 
+sleep 5
+
 gsettings set org.gnome.desktop.interface icon-theme Reversal; sleep 1
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'; sleep 1
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250; sleep 1
