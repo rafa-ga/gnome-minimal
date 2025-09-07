@@ -142,24 +142,24 @@ fi
 sleep 1
 
 if ls /boot/loader/entries/*linux.conf >/dev/null 2>&1; then
-    sed -i 's/^title.*/title Arch/' /boot/loader/entries/*linux.conf
+    sed -i 's/^title.*/title Arch Linux/' /boot/loader/entries/*linux.conf
     sed -i '/^options/ s/$/ quiet loglevel=3 systemd.show_status=1 rd.systemd.show_status=1/' /boot/loader/entries/*linux.conf
     echo "sort-key 10-arch" >> /boot/loader/entries/*linux.conf
 fi
 
 if ls /boot/loader/entries/*linux-zen.conf >/dev/null 2>&1; then
-    sed -i 's/^title.*/title Arch Zen/' /boot/loader/entries/*linux-zen.conf
+    sed -i 's/^title.*/title Arch Linux Zen/' /boot/loader/entries/*linux-zen.conf
     sed -i '/^options/ s/$/ quiet loglevel=3 systemd.show_status=1 rd.systemd.show_status=1/' /boot/loader/entries/*linux-zen.conf
     echo "sort-key 20-arch_zen" >> /boot/loader/entries/*linux-zen.conf
 fi
 
 if ls /boot/loader/entries/*linux-fallback.conf >/dev/null 2>&1; then
-    sed -i 's/^title.*/title Arch (fallback)/' /boot/loader/entries/*linux-fallback.conf
+    sed -i 's/^title.*/title Arch Linux (fallback)/' /boot/loader/entries/*linux-fallback.conf
     echo "sort-key 30-arch" >> /boot/loader/entries/*linux-fallback.conf
 fi
 
 if ls /boot/loader/entries/*linux-zen-fallback.conf >/dev/null 2>&1; then
-    sed -i 's/^title.*/title Arch Zen (fallback)/' /boot/loader/entries/*linux-zen-fallback.conf
+    sed -i 's/^title.*/title Arch Linux Zen (fallback)/' /boot/loader/entries/*linux-zen-fallback.conf
     echo "sort-key 40-arch_zen" >> /boot/loader/entries/*linux-zen-fallback.conf
 fi
 
