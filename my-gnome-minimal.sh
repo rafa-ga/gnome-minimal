@@ -78,8 +78,7 @@ inetutils \
 less \
 libheif \
 libwnck3 \
-linux \
-linux-headers \
+linux-zen \
 linux-zen-headers \
 loupe \
 man-db \
