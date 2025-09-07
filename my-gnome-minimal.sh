@@ -76,6 +76,7 @@ gvfs-wsdd \
 hunspell-es_es \
 inetutils \
 less \
+libcamera \
 libheif \
 libwnck3 \
 linux-zen \
@@ -215,6 +216,11 @@ mv "/opt/gnome-minimal/imagenes/placeholder" "/var/lib/AccountsService/icons/$HU
 chown -R "$HUMAN":"$HUMAN" "/var/lib/AccountsService/icons"
 rm -rf "/opt/gnome-minimal/imagenes" "/opt/gnome-minimal/.git"
 echo -e "░▒▓█ AVATARES Y WALLPAPERS AÑADIDOS. █▓▒░\n"; sleep 1
+
+mkdir -p /home/$HUMAN/.local/state/wireplumber
+mkdir -p /home/$HUMAN/.local/state/Heroic
+chown $HUMAN:$HUMAN -R /home/$HUMAN/.local/state
+chmod 755 -R /home/$HUMAN/.local/state
 
 tee /etc/gdm/custom.conf > /dev/null <<EOF
 [daemon]
