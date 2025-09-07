@@ -8,7 +8,6 @@ truncate -s0 "$HOME/.bashrc"
 cat << 'EOF' >> "$HOME/.bashrc"
 alias cc='cat'
 alias clean='pacman -Qdtq | xargs -r yay -Rns --noconfirm && sudo paccache -r -k3'
-alias errors='journalctl -p err -b'
 alias la='ls -la'
 alias ll='ls -l'
 alias lt='ls -lrt'
@@ -32,6 +31,10 @@ tar -xf "/opt/gnome-minimal/iconos/Reversal.tar.xz" -C "$HOME/.icons"
 rm -rf "/opt/gnome-minimal/iconos"
 
 sleep 5
+
+# mkdir -p "$HOME/.config/dconf"
+# chmod 700 "$HOME/.config/dconf"
+# chown -R "$(whoami)":"$(whoami)" "$HOME/.config"
 
 gsettings set org.gnome.desktop.interface icon-theme Reversal; sleep 1
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'; sleep 1
