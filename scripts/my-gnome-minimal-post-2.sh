@@ -37,7 +37,7 @@ echo
 
 case "$flat" in
   1)
-    sudo pacman -S --noconfirm gnome-software flatpak
+    sudo pacman -S --noconfirm appstream bubblewrap flatpak gnome-software packagekit xdg-dbus-proxy xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	echo -e "░▒▓█ REPOSITORIO 'FlatHub' AÑADIDO. █▓▒░"; sleep 1
 
