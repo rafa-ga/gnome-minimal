@@ -15,7 +15,7 @@ elif [[ "$model" =~ Intel ]]; then
     pacman -S --noconfirm --needed intel-ucode thermald iucode-tool intel-media-driver libva-intel-driver sof-firmware
     echo -e "\n░▒▓█ DETECTADA CPU INTEL. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
-    pacman -S --noconfirm --needed amd-ucode
+    pacman -S --noconfirm --needed amd-ucode libva-mesa-driver
     echo -e "\n░▒▓█ DETECTADA CPU AMD. █▓▒░\n"
 else
     echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
@@ -25,6 +25,7 @@ sleep 1
 pacman -S --noconfirm --needed \
 accountsservice \
 acl \
+alsa-plugins \
 alsa-topology-conf \
 alsa-ucm-conf \
 alsa-utils \
@@ -42,11 +43,13 @@ bluez-libs \
 bluez-utils \
 bolt \
 bpftrace \
+busybox \
 ca-certificates \
 cifs-utils \
 coreutils \
 cpio \
 crash \
+cronie \
 curl \
 dbus \
 desktop-file-utils \
@@ -72,6 +75,7 @@ fontconfig \
 fprintd \
 fuse3 \
 fwupd \
+gcc \
 gcr \
 gdb \
 gdm \
@@ -104,6 +108,7 @@ gnome-terminal \
 gnome-text-editor \
 gnupg \
 grilo-plugins \
+groff \
 gsettings-desktop-schemas \
 gst-libav \
 gtk-update-icon-cache \
@@ -118,6 +123,7 @@ gvfs-onedrive \
 gvfs-smb \
 gvfs-wsdd \
 hdparm \
+hunspell-en_us \
 hunspell-es_es \
 hwdata \
 ibus \
@@ -145,6 +151,7 @@ man-db \
 memtest86+ \
 mesa-utils \
 mission-center \
+mkinitcpio \
 nano \
 nautilus \
 networkmanager \
@@ -166,6 +173,9 @@ pipewire-alsa \
 pipewire-audio \
 pipewire-jack \
 pipewire-pulse \
+pkgconf \
+pkgfile \
+polkit \
 poppler-data \
 power-profiles-daemon \
 psmisc \
@@ -200,7 +210,6 @@ upower \
 usbmuxd \
 usbutils \
 util-linux \
-util-linux \
 vi \
 vim \
 vlc \
@@ -212,10 +221,7 @@ wireplumber \
 wsdd \
 xcursor-themes \
 xdg-user-dirs \
-xdg-user-dirs \
 xdg-user-dirs-gtk \
-xdg-user-dirs-gtk \
-xdg-utils \
 xdg-utils \
 xorg-xwayland \
 xz \
@@ -235,7 +241,7 @@ elif [[ "$model" =~ Intel ]]; then
     pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode
     echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
-    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud xf86-video-amdgpu libva-mesa-driver
+    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud
     echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 else
     echo -e "░▒▓█ CPU NO RECONOCIDA: $model █▓▒░\n"
