@@ -12,7 +12,7 @@ model=$(lscpu | grep -iE "Model name|Nombre del modelo" | awk -F: '{print $2}' |
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
     echo -e "░▒▓█ DETECTADA MÁQUINA VIRTUAL. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
-    pacman -S --noconfirm --needed intel-ucode thermald iucode-tool
+    pacman -S --noconfirm --needed intel-ucode thermald iucode-tool intel-media-driver libva-intel-driver sof-firmware
     echo -e "\n░▒▓█ DETECTADA CPU INTEL. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
     pacman -S --noconfirm --needed amd-ucode
@@ -23,26 +23,63 @@ fi
 sleep 1
 
 pacman -S --noconfirm --needed \
+accountsservice \
+acl \
+alsa-topology-conf \
+alsa-ucm-conf \
+alsa-utils \
+aspell \
+aspell-es \
 avahi \
 baobab \
 base-devel \
+bash \
+bash-completion \
 bind \
+binutils \
 bluez \
 bluez-libs \
 bluez-utils \
+bolt \
+bpftrace \
+ca-certificates \
 cifs-utils \
+coreutils \
+cpio \
+crash \
 curl \
+dbus \
+desktop-file-utils \
 diffutils \
+distro-info \
+distro-info-data \
 dkms \
+dmidecode \
+dosfstools \
+e2fsprogs \
+ed \
 efibootmgr \
+ethtool \
 evince \
+exfatprogs  \
 fastfetch \
 ffmpeg \
 ffmpegthumbnailer \
+file \
 file-roller \
 findutils \
+fontconfig \
+fprintd \
+fuse3 \
+fwupd \
+gcr \
+gdb \
 gdm \
+geocode-glib-common \
+ghostscript \
 git \
+gjs \
+glib-networking \
 glib2 \
 gnome-browser-connector \
 gnome-calculator \
@@ -55,14 +92,21 @@ gnome-font-viewer \
 gnome-keyring \
 gnome-logs \
 gnome-menus \
+gnome-online-accounts \
+gnome-remote-desktop \
 gnome-session \
 gnome-settings-daemon \
 gnome-shell \
+gnome-shell-extension-appindicator \
+gnome-shell-extension-desktop-icons-ng \
 gnome-shell-extensions \
 gnome-terminal \
 gnome-text-editor \
+gnupg \
 grilo-plugins \
+gsettings-desktop-schemas \
 gst-libav \
+gtk-update-icon-cache \
 gvfs \
 gvfs-afc \
 gvfs-dnssd \
@@ -73,39 +117,89 @@ gvfs-nfs \
 gvfs-onedrive \
 gvfs-smb \
 gvfs-wsdd \
+hdparm \
 hunspell-es_es \
+hwdata \
+ibus \
+ibus-table \
 inetutils \
+ipp-usb \
+iso-codes \
+jq \
+kbd \
+kexec-tools \
+kmod \
 less \
 libcamera \
 libheif \
 libwnck3 \
 linux-zen \
 linux-zen-headers \
+logrotate \
 loupe \
+lsb-release \
+lsof \
+luit \
+makedumpfile \
 man-db \
+memtest86+ \
 mesa-utils \
 mission-center \
 nano \
 nautilus \
 networkmanager \
 nfs-utils \
-ntfs-3g \
 nss-mdns \
+ntfs-3g \
+numactl \
 openssh \
+openssl \
+openvpn \
+p11-kit \
 pacman-contrib \
+parted \
+patch \
+pciutils \
+perl \
 pipewire \
+pipewire-alsa \
 pipewire-audio \
 pipewire-jack \
 pipewire-pulse \
+poppler-data \
 power-profiles-daemon \
+psmisc \
 qt5-base \
 qt6-base \
+rpcsvc-proto \
+rsync \
+rtkit \
+rygel \
+sane-airscan \
+shared-mime-info \
 smartmontools \
+spice-vdagent \
+squashfs-tools \
+strace \
 sushi \
+switcheroo-control \
+sysstat \
+systemd \
 tar \
+tcl \
+tcpdump \
+time \
 timeshift \
+tinysparql \
+trace-cmd \
+tzdata \
+udisks2 \
 unrar \
 unzip \
+upower \
+usbmuxd \
+usbutils \
+util-linux \
 util-linux \
 vi \
 vim \
@@ -113,11 +207,20 @@ vlc \
 vlc-plugins-all \
 webp-pixbuf-loader \
 wget \
+wireless-regdb \
 wireplumber \
+wsdd \
+xcursor-themes \
+xdg-user-dirs \
+xdg-user-dirs \
+xdg-user-dirs-gtk \
 xdg-user-dirs-gtk \
 xdg-utils \
+xdg-utils \
 xorg-xwayland \
-xz
+xz \
+zip \
+zstd
 echo -e "\n░▒▓█ PAQUETES BÁSICOS INSTALADOS. █▓▒░\n"; sleep 1
 
 systemctl start bluetooth && systemctl enable bluetooth
@@ -129,7 +232,7 @@ echo -e "\n░▒▓█ 'gdm' HABILITADO. █▓▒░\n"; sleep 1
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
     echo -e "░▒▓█ NO SE INSTALARÁ NINGÚN PAQUETE PARA GAMING. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
-    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode intel-media-driver libva-intel-driver sof-firmware
+    pacman -S --noconfirm --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel gamemode lib32-gamemode
     echo -e "\n░▒▓█ PAQUETES GAMING INSTALADOS. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
     pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud xf86-video-amdgpu libva-mesa-driver
