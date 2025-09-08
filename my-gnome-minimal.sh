@@ -12,7 +12,7 @@ model=$(lscpu | grep -iE "Model name|Nombre del modelo" | awk -F: '{print $2}' |
 if [[ "$model" =~ QEMU || "$model" =~ KVM || "$model" =~ VirtualBox || "$model" =~ VMware || "$model" =~ Microsoft || "$model" =~ Hyper-V ]]; then
     echo -e "░▒▓█ DETECTADA MÁQUINA VIRTUAL. █▓▒░\n"
 elif [[ "$model" =~ Intel ]]; then
-    pacman -S --noconfirm --needed intel-ucode
+    pacman -S --noconfirm --needed intel-ucode thermald iucode-tool
     echo -e "\n░▒▓█ DETECTADA CPU INTEL. █▓▒░\n"
 elif [[ "$model" =~ AMD ]]; then
     pacman -S --noconfirm --needed amd-ucode
@@ -114,8 +114,6 @@ vlc-plugins-all \
 webp-pixbuf-loader \
 wget \
 wireplumber \
-xdg-desktop-portal \
-xdg-desktop-portal-gnome \
 xdg-user-dirs-gtk \
 xdg-utils \
 xorg-xwayland \
@@ -166,7 +164,7 @@ fi
 tee /boot/loader/loader.conf > /dev/null <<'EOF'
 default @saved
 timeout 3
-console-mode auto
+console-mode max
 editor no
 auto-firmware no
 EOF
